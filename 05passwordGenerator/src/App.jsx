@@ -1,4 +1,4 @@
-import React, { useCallback, useEffect, useState } from "react";
+import React, { useCallback, useEffect, useRef, useState } from "react";
 
 function App() {
   const [length, setLength] = useState(8);
@@ -32,6 +32,17 @@ function App() {
     passwordGenerator();
   }, [length, numberAllowed, charAllowed, passwordGenerator]);
 
+  //! If we need to take reference of something then we can use useRef hook.
+  //!useRef hook: (will be used to highlight the password generated before pasting it to some other place)
+
+  const passwordRef = useRef(null);
+
+  const copyPasswordToClipBoard = useCallback(() => {
+    passwordRef.current?.select(); //! to select the password (highlight it)
+    passwordRef.current?.setSelectionRange(0, 5); //! to select the passwordRange
+    window.navigator.clipboard.writeText(password); //! to write password back to clipboard
+  }, [password]);
+
   return (
     <>
       <div className="w-full max-w-md mx-auto shadow-md rounded-lg px-4 my-8 py-3 text-orange-500 bg-gray-700">
@@ -43,8 +54,12 @@ function App() {
             className="outline-none w-full py-1 px-3"
             placeholder="Password"
             readOnly
+            ref={passwordRef}
           />
-          <button className="outline-none bg-blue-700 text-white px-3 py-0.5 shrink-0">
+          <button
+            className="outline-none bg-blue-700 text-white px-3 py-0.5 shrink-0 hover:bg-red-500 hover:text-black hover:duration-500"
+            onClick={copyPasswordToClipBoard}
+          >
             Copy
           </button>
         </div>
