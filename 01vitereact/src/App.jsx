@@ -1,4 +1,5 @@
 import { useState } from "react";
+import FirstComp from "./FirstComp";
 function App() {
   const [count, setCount] = useState(0);
 
@@ -8,10 +9,12 @@ function App() {
 
   return (
     <>
-      <h1>React with Vite</h1>
-      <button onClick={handleCount}>
-        count is {count}
-      </button>
+      {/* <h1>React with Vite</h1> */}
+      {/* You can only return ONE ELEMENT in jsx so enclose everything in a div*/}
+      <div> 
+        <FirstComp />
+        <button onClick={handleCount}>count is {count}</button>
+      </div>
     </>
   );
 }
