@@ -3,12 +3,20 @@ import { useState } from "react"
 function App() {
   const [count, setCount] = useState(5);
 
+  // const addValue = () => {
+  //   if(count == 20)
+  //   {
+  //     return;
+  //   }
+  //   setCount(count + 1);
+  // }
+
   const addValue = () => {
-    if(count == 20)
-    {
-      return;
-    }
-    setCount(count + 1);
+    setCount(prevCount => prevCount + 1);
+    setCount(prevCount => prevCount + 1);
+    setCount(prevCount => prevCount + 1);
+    setCount(prevCount => prevCount + 1);
+    setCount(prevCount => prevCount + 1);
   }
 
   const removeValue = () => {
