@@ -1,6 +1,7 @@
 import React from "react";
 import { useId } from "react";
-function InputBox({
+
+const InputBox = ({
   label,
   amount,
   onAmountChange,
@@ -11,7 +12,7 @@ function InputBox({
   currencyDisable = false,
 
   className = "",
-}) {
+}) => {
   //! useId hook in React allows you to generate unique identifiers for your components.
 
   const amountInputId = useId();
@@ -54,6 +55,6 @@ function InputBox({
       </div>
     </div>
   );
-}
+};
 
 export default InputBox;
